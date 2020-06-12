@@ -8,8 +8,8 @@ import logging
 def upload(path,image_name):
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 
-    secret_id = 'AKIDgpjiGYcbRwDB7en89PzRaZIzMqMOqsB6'      # 替换为用户的 secretId
-    secret_key = 'tO1nsq5EAmFSLo44XkLfiY1UOIvCG0TF'      # 替换为用户的 secretKey
+    secret_id = '用户的secretid'      # 替换为用户的 secretId
+    secret_key = '用户的secretKey'      # 替换为用户的 secretKey
     region = 'ap-chengdu'     # 替换为用户的 Region
     token = None                # 使用临时密钥需要传入 Token，默认为空，可不填
     scheme = 'https'            # 指定使用 http/https 协议来访问 COS，默认为 https，可不填
@@ -18,7 +18,7 @@ def upload(path,image_name):
     client = CosS3Client(config)
     # 参照下文的描述。或者参照 Demo 程序，详见 https://github.com/tencentyun/cos-python-sdk-v5/blob/master/qcloud_cos/demo.py
     response = client.upload_file(
-        Bucket='mini-program-1258708612',
+        Bucket='bucket',
         LocalFilePath=path,
         Key=image_name,
         PartSize=1,
