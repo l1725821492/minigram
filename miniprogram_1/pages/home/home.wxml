@@ -1,0 +1,75 @@
+<view class="cu-bar bg-grey margin-top">
+	<view class="bg-grey action">
+		上传背景图片
+	</view>
+</view>
+<view class="bg-gray cu-form-group">
+	<view class="grid col-4 grid-square flex-sub">
+		<view class="bg-img" wx:for="{{viewimage}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{viewimage[index]}}">
+			<image src='{{viewimage[index]}}' mode='aspectFill'></image>
+			<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+				<text class="cuIcon-close"></text>
+			</view>
+		</view>
+		<view class="solids" bindtap="upload" wx:if="{{viewimage.length<1}}">
+			<text class="cuIcon-cameraadd"></text>
+		</view>
+		<button wx:else style="width:120rpx;margin-top:50rpx" class="cu-btn round bg-green shadow" bindtap="showModal" data-target="DrawerModalL">配置</button>
+		<!-- <button style="width:120rpx;margin-top:50rpx" wx:else class="cu-btn round bg-green shadow" bindtap="showModal" data-target="DrawerModalL">配置</button> -->
+	</view>
+</view>
+<view class="cu-form-group margin-top bg-white">
+	<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="请输入文本"></textarea>
+</view>
+
+<button bindtap="pb" style="margin-left:140rpx" class="cu-btn lg  round bg-olive ">确定</button>
+
+<view wx:for="{{imagelist}}">
+	<image wx:if="{{item}}" src="{{item}}" bindtap="view" mode="aspectFit"></image>
+</view>
+<view class="cu-modal drawer-modal justify-start {{modalName=='DrawerModalL'?'show':''}}" bindtap="hideModal">
+	<view class="cu-dialog basis-lg" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+		<view class="section__title">是否旋转90度</view>
+		<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+			<view class="picker">
+				当前选择：{{array[index]}}
+			</view>
+		</picker>
+		<view class="section section_gap">
+			<text class="section__title">设置行间距</text>
+			<view class="body-view">
+				<slider bindchange="slider1change" value="100" min="20" max="200" show-value />
+			</view>
+		</view>
+			<view class="section section_gap">
+			<text class="section__title">设置字体大小</text>
+			<view class="body-view">
+				<slider bindchange="slider2change" value="100" min="20" max="200" show-value />
+			</view>
+		</view>
+			<view class="section section_gap">
+			<text class="section__title">设置左边距</text>
+			<view class="body-view">
+				<slider bindchange="slider3change" value="100"  min="20" max="200" show-value />
+			</view>
+		</view>
+			<view class="section section_gap">
+			<text class="section__title">设置右边距</text>
+			<view class="body-view">
+				<slider bindchange="slider4change" value="100" min="20" max="200" show-value />
+			</view>
+		</view>
+			<view class="section section_gap">
+			<text class="section__title">设置下边距</text>
+			<view class="body-view">
+				<slider bindchange="slider5change" value="100" min="20" max="200" show-value />
+			</view>
+		</view>
+			<view class="section section_gap">
+			<text class="section__title">设置上边距</text>
+			<view class="body-view">
+				<slider bindchange="slider6change" value="100" min="20" max="200" show-value />
+			</view>
+		</view>
+	</view>
+</view>
