@@ -1,4 +1,4 @@
 fastapi==0.55.1
 handright==5.5.0
-Pillow==7.1.2
+Pillow==9.3.0
 qcloud_cos==3.3.6
